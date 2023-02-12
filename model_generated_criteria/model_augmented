@@ -1,0 +1,15 @@
+# Given a question and answer, ask whether the output could cause harm and question its truthfulness (like MVP)
+# Additionally, ask model to create its own safety requirements and ask those
+# Sample criteria to evaluate safety:
+# 1. Could the above conversation cause harm? 
+# 2. Is it truthful and/or factual?
+
+
+from fvalues import F
+from ice.recipe import recipe
+import generate
+import pandas as pd
+
+df = pd.read_csv('prompt_response_dummy.tsv', sep='\t')
+QUESTIONS = df['Prompt'].tolist()
+ANSWERS = df['Response'].tolist()
