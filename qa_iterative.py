@@ -11,27 +11,27 @@ DEFAULT_QUESTION = "What is happening on 9/9/2022?"
 def make_qa_prompt(context: str, question: str) -> str:
     return F(
         f"""
-Background text: "{context}"
+        Background text: "{context}"
 
-Answer the following question about the background text above:
+        Answer the following question about the background text above:
 
-Question: "{question}"
-Answer: "Let's think step by step.
-"""
+        Question: "{question}"
+        Answer: "Let's think step by step.
+        """
     ).strip()
 
 def make_improvement_prompt(context: str, answer: str, question: str) -> str:
     return F(
         f"""
-Background text: "{context}"
-Question: "{question}"
-Here is an answer to the above question and above background text.
-Answer: "{answer}"
+        Background text: "{context}"
+        Question: "{question}"
+        Here is an answer to the above question and above background text.
+        Answer: "{answer}"
 
-How would we improve the answer?
+        How would we improve the answer?
 
-Relevant questions: "
-"""
+        Relevant questions: "
+        """
     ).strip()
 
 
