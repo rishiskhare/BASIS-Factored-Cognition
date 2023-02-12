@@ -1,0 +1,16 @@
+docutils>=0.12
+sphinxcontrib-napoleon>=0.7.0
+
+[:python_version<"3.8"]
+importlib_metadata>=1.0
+typing_inspect>=0.5.0
+
+[:python_version<"3.9"]
+pkgutil_resolve_name
+typing_extensions>=3.7.4
+
+[:sys.platform=="win32"]
+colorama>=0.3.4
+
+[docs]
+sphinx>=4.4

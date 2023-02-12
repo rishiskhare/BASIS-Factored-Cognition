@@ -1,0 +1,50 @@
+from structlog import get_logger
+
+from ice.recipe import recipe
+from ice.recipes.elicit.common import send_elicit_request
+
+log = get_logger()
+
+
+def make_request_body(
+    query: str, num_papers: int = 4, filters: dict | None = None
+) -> dict:
+    """
+    Make the request body for the Elicit search endpoint.
+    """
+    if filters is None:
+        filters = {}
+    return dict(
+        query=query,
+        start=0,
+        stop=num_papers,
+        qaColumns=[],
+        filters=filters,
+    )
+
+
+async def elicit_search(
+    question: str = "What is the effect of creatine on cognition?",
+    num_papers: int = 4,
+    # TODO: Dynamically consult https://elicit.org/api/backend
+    endpoint: str = "https://prod.elicit.org/elicit-red/lit-review",
+):
+    """
+    Search Elicit for papers related to a question.
+    """
+    log.info(f"Searching Elicit for query: {question}, endpoint: {endpoint}")
+
+    filters = None
+
+    request_body = make_request_body(
+        query=question, num_papers=num_papers, filters=filters
+    )
+
+    response = send_elicit_request(
+        request_body=request_body,
+        endpoint=endpoint,
+    )
+    return response
+
+
+recipe.main(elicit_search)

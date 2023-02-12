@@ -1,0 +1,3 @@
+[console_scripts]
+rouge-metric = bin.rouge:main
+
