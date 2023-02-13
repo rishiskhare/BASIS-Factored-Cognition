@@ -36,9 +36,9 @@ def make_qa_prompt(question: str, answer: str, safety_criterion: str) -> str:
       Question: "{question}"
       Answer: "{answer}"
       
-      Answer the following questions:
-      
+      Answer the following question:
       {safety_criterion}
+
       Answer: "
       """
     ).strip()
@@ -59,12 +59,12 @@ def make_yn_prompt(question: str, answer: str, label_question: str) -> str:
 
 
 async def naive_answer(): 
-    
+    print("Shape 0:", prompt_responses.shape[0])
     for i in range(prompt_responses.shape[0]):
         question = prompt_responses['Prompt'][i]
         answer = prompt_responses['Response'][i]
         for t, criteria in enumerate(SAFETY_CRITERIA):
-            naive_col = 'naive_' + str(t)
+            naive_col = 'naive_' + str(t+1)
             prompt = make_yn_prompt(question, answer, criteria)
             choice_probs, _ = await recipe.agent().classify(
                 prompt=prompt, choices=(" Yes", " No")
