@@ -6,10 +6,6 @@
 - John Wang
 - Rishi Khare
 
-# Github
-
-[https://github.com/rishiskhare/BASIS-Factored-Cognition](https://github.com/rishiskhare/BASIS-Factored-Cognition)
-
 # Basics + Intention
 
 The key library we used Ought Ice, a mainstay library for [Factored Cognition](https://ought.org/research/factored-cognition)
