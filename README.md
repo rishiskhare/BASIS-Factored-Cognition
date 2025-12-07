@@ -2,9 +2,9 @@
 
 # Collaborators
 
+- Rishi Khare
 - Adam Khoja
 - John Wang
-- Rishi Khare
 
 # Basics + Intention
 
